@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name"      : "Proper Recovery",
+    "slug"      : "ProperRecovery",
+    "privacy"   : "public",
+    "sdkVersion": "32.0.0",
+    "platforms" : [
+      "ios",
+      "android"
+    ],
+    "androidStatusBarColor": "#334393",
+    "androidStatusBar"     : {
+      "barStyle"       : "light-content",
+      "backgroundColor": "#334393"
+    },
+    "version"    : "1.0.0",
+    "orientation": "portrait",
+    "icon"       : "./app/assets/icon.png",
+    "splash"     : {
+      "image"          : "./app/assets/splash.png",
+      "resizeMode"     : "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
