@@ -1,17 +1,18 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 //import the neccesary view (import [viewName] from "../views/[viewName]")
-import HomeScreen from "../views/SuggestedPlanScreen"
+import SuggestedPlan from "../views/SuggestedPlanScreen";
+import HomeScreen from "../views/HomeScreen";
+import CreatePlan from "../views/CreatePlanSelection";
 
 const RootStack = createStackNavigator(
   {
-    HomeScreen: {
-        screen: HomeScreen
-    },
+    HomeScreen: HomeScreen,
+    SuggestedPlan: SuggestedPlan,
+    CreatePlan: CreatePlan
   },
   {
     //add the initial route here
-    initialRouteName: "HomeScreen",
-    
+    initialRouteName: "HomeScreen"
   }
 );
 
