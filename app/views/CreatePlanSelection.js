@@ -44,27 +44,11 @@ export default class CreatePlanSelection extends Component {
   render() {
     return (
       <Container>
-        {/*
-          <Header style={{ backgroundColor: "#1d2731" }}>
-          <Left style={{ flex: 1 }}>
-            <Button transparent onPress={() => navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={{ flex: 2, alignItems: "center" }}>
-            <Title>Plans</Title>
-          </Body>
-          <Right style={{ flex: 1 }}>
-            <Button transparent>
-              <Icon name="menu" />
-            </Button>
-          </Right>
-        </Header>
-          */}
-
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
           <View style={styles.topRow}>
-            <Text style={styles.text}>Find Suggested Plans</Text>
+            <Button onPress={() => this.props.navigation.push("SuggestedPlan")}>
+              <Text style={styles.text}>Find Suggested Plans</Text>
+            </Button>
           </View>
           <View style={styles.bottomRow}>
             <Text style={styles.text}>Create Plan</Text>

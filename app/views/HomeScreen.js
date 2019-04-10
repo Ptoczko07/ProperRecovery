@@ -60,12 +60,8 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.bottomRow}>
             <Button onPress={() => this.props.navigation.push("CreatePlan")}>
-              <Text>Click Me!</Text>
+              <Text>Create A New Plan</Text>
             </Button>
-
-            {/*
-              <Text style={styles.text}>Create A New Plan</Text>
-            */}
           </View>
         </Content>
       </Container>
