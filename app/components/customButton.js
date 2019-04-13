@@ -22,7 +22,7 @@ customButton.propTypes = {
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize      : 20,
+    fontSize      : 23,
     color         : '#ffffff',
     textAlign     : 'center',
     justifyContent: 'center'

@@ -6,13 +6,7 @@ import {
   Title,
   Content,
   H1,
-  TouchableOpacity,
-  Card,
-  CardItem,
   Thumbnail,
-  Image,
-  Footer,
-  FooterTab,
   Button,
   Left,
   Right,
@@ -60,13 +54,13 @@ export default class HomeScreen extends Component {
           <View style={styles.middleRow}>
           <CustomButton 
             text    = "Select From Current Plans"
-            onPress = {() => { alert("Hello");}}
+            onPress = {() => { this.props.navigation.push("SelectPlanScreen"); }}
           />
           </View>
           <View style={styles.bottomRow}>
           <CustomButton 
             text    = "Create A New Plan"
-            onPress = {() => { this.props.navigation.push("CreatePlan") }}
+            onPress = {() => { this.props.navigation.push("CreatePlanSelection") }}
           />
           </View>
         </Content>
