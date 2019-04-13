@@ -27,9 +27,6 @@ import {
 } from "native-base";
 
 export default class CreatePlanSelection extends Component {
-  static navigationOptions = {
-    header: null
-  };
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
@@ -99,24 +96,24 @@ export default class CreatePlanSelection extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#ffffff"
   },
   topRow: {
     backgroundColor: "#0b3c5d",
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1
+    alignItems     : "center",
+    justifyContent : "center",
+    flex           : 1
   },
 
   bottomRow: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#1d2731",
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent : "center",
+    alignItems     : "center"
   },
   text: {
-    color: "white",
+    color   : "white",
     fontSize: 27
   },
   searchButton: {

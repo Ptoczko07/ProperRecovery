@@ -6,6 +6,7 @@ import {
   Title,
   Content,
   H1,
+  TouchableOpacity,
   Card,
   CardItem,
   Thumbnail,
@@ -19,6 +20,7 @@ import {
   Icon,
   Text
 } from "native-base";
+import CustomButton from '../components/customButton';
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -44,7 +46,7 @@ export default class HomeScreen extends Component {
             <Thumbnail
               large
               source={{
-                uri:
+                uri: 
                   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1031&q=80"
               }}
             />
@@ -56,12 +58,16 @@ export default class HomeScreen extends Component {
             </Button>
           </View>
           <View style={styles.middleRow}>
-            <Text style={styles.text}>Select From Current Plans</Text>
+          <CustomButton 
+            text    = "Select From Current Plans"
+            onPress = {() => { alert("Hello");}}
+          />
           </View>
           <View style={styles.bottomRow}>
-            <Button onPress={() => this.props.navigation.push("CreatePlan")}>
-              <Text>Create A New Plan</Text>
-            </Button>
+          <CustomButton 
+            text    = "Create A New Plan"
+            onPress = {() => { this.props.navigation.push("CreatePlan") }}
+          />
           </View>
         </Content>
       </Container>
@@ -71,28 +77,28 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#9db5b2"
   },
   topRow: {
     backgroundColor: "#0b3c5d",
-    alignItems: "center",
-    flexDirection: "column",
-    padding: 25,
-    flex: 2
+    alignItems     : "center",
+    flexDirection  : "column",
+    padding        : 25,
+    flex           : 2
   },
   middleRow: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    flex           : 1,
+    justifyContent : "center",
+    alignItems     : "center",
     backgroundColor: "#328cc1"
   },
   bottomRow: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#1d2731",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white"
+    justifyContent : "center",
+    alignItems     : "center",
+    color          : "white"
   },
   continueButton: {
     // alignItems: 'center'
