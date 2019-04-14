@@ -55,7 +55,7 @@ export default class CreatePlanSelection extends Component {
           <View style={styles.bottomRow}>
           <CustomButton 
             text    = "Create Plan"
-            onPress = {() => { alert("not implemented yet"); }}
+            onPress = {() => { this.props.navigation.push("CreatePlanScreen"); }}
           />
           </View>
         </Content>
