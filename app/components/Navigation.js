@@ -13,7 +13,8 @@ import CreatePlanSelection from "../views/CreatePlanSelection";
 import SelectPlanScreen from "../views/SelectPlanScreen";
 import CreatePlanScreen from "../views/CreatePlanScreen";
 import AddExerciseScreen from "../views/AddExerciseScreen";
-import WeeklyScheduleScreen from "../views/WeeklyScheduleScreen"
+import WeeklyScheduleScreen from "../views/WeeklyScheduleScreen";
+import PremadePlanScreen from "../views/PremadePlanScreen";
 
 const RootStack = createStackNavigator({
   HomeScreen          : HomeScreen,
@@ -22,7 +23,8 @@ const RootStack = createStackNavigator({
   SelectPlanScreen    : SelectPlanScreen,
   CreatePlanScreen    : CreatePlanScreen,
   AddExerciseScreen   : AddExerciseScreen,
-  WeeklyScheduleScreen: WeeklyScheduleScreen
+  WeeklyScheduleScreen: WeeklyScheduleScreen,
+  PremadePlanScreen   : PremadePlanScreen
 });
 const LoginStack = createStackNavigator({
   Login       : Login,

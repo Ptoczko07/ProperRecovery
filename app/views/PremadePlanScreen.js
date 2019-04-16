@@ -44,7 +44,7 @@ var listOfPrograms = [
   },
 ]
 
-export default class SuggestedPlanScreen extends Component {
+export default class PremadePlanScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>

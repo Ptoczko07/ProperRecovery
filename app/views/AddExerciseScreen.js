@@ -22,7 +22,7 @@ import {
 } from "native-base";
 import CustomButton from '../components/customButton';
 
-export default class HomeScreen extends Component {
+export default class AddExerciseScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>

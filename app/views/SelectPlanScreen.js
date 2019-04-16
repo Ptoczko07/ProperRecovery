@@ -16,7 +16,7 @@ import {
   Thumbnail
 } from "native-base";
 
-export default class CreatePlanSelection extends Component {
+export default class SelectPlanSelection extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
