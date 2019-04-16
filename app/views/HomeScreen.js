@@ -49,7 +49,8 @@ export default class HomeScreen extends Component {
             <H1 style={{ paddingTop: 20, color: "white" }}>
               Welcome Back, (Name)!
             </H1>
-            <Button block info style={styles.continueButton}>
+            <Button block info style={styles.continueButton}
+              onPress = {() => { this.props.navigation.push("WeeklyScheduleScreen"); }}>
               <Text style={styles.text}>Continue with (Schedule Name)</Text>
             </Button>
           </View>

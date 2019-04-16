@@ -93,11 +93,11 @@ export default class HomeScreen extends Component {
           <Form>
             <Item floatingLabel>
               <Label>Enter Number of Sets</Label>
-              <Input />
+              <Input keyboardType = "numeric"/>
             </Item>
             <Item floatingLabel last>
               <Label>Enter Number of Reps</Label>
-              <Input />
+              <Input keyboardType = "numeric"/>
             </Item>
           </Form>
         </Content>

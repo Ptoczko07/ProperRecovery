@@ -20,6 +20,7 @@ import {
   CardItem,
   Thumbnail,
   Image,
+  Label,
   Input,
   Item,
   Footer,
@@ -45,7 +46,7 @@ export default class Login extends Component {
         this.props.navigation.navigate("RootStack");
       })
       .catch(function(error) {
-        var errorCode = error.code;
+        var errorCode    = error.code;
         var errorMessage = error.message;
       });
   }
@@ -55,43 +56,79 @@ export default class Login extends Component {
     Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .catch(function(error) {
-        var errorCode = error.code;
+        var errorCode    = error.code;
         var errorMessage = error.message;
       });
   }
 
+  static navigationOptions = ({ navigation }) => ({
+    header: (
+      <Header style={{ backgroundColor: "#1d2731" }}>
+        <Left style={{ flex: 1 }}>
+        </Left>
+        <Body style={{ flex: 2, alignItems: "center" }}>
+          <Title>Proper Recovery</Title>
+        </Body>
+        <Right style={{ flex: 1 }}>
+        </Right>
+      </Header>
+    )
+  });
+
   render() {
     return (
       <Container>
-        <Header />
-        <Content>
-          <Form>
-            <Item>
-              <Input
-                placeholder="Email"
-                value={this.state.email}
-                onChangeText={email => this.setState({ email })}
-              />
-            </Item>
-            <Item last>
-              <Input
-                placeholder="Password"
-                value={this.state.password}
-                onChangeText={password => this.setState({ password })}
-              />
-            </Item>
-          </Form>
-          <Button block onPress={() => this.SignIn()}>
-            <Text>Sign In</Text>
-          </Button>
-          <Button
-            block
-            onPress={() => this.props.navigation.push("Registration")}
-          >
-            <Text>Create Account</Text>
-          </Button>
+        <Content contentContainerStyle={{ flexGrow: 1 }}>
+          <View style={styles.content}>
+          <View style={styles.formStyle}>
+            <Form style={{backgroundColor: '#9bc1ff'}}>
+              <Item inlineLabel>
+              <Label>Username</Label>
+                <Input
+                  placeholder  = "Email"
+                  value        = {this.state.email}
+                  onChangeText = {email => this.setState({ email })}
+                />
+              </Item>
+              <Item inlineLabel last>
+              <Label>Password</Label>
+                <Input
+                  secureTextEntry = {true}
+                  placeholder     = "Password"
+                  value           = {this.state.password}
+                  onChangeText    = {password => this.setState({ password })}
+                />
+              </Item>
+            </Form>
+            <Button block onPress={() => this.SignIn()}>
+              <Text>Sign In</Text>
+            </Button>
+            <Button block
+              style   = {{marginTop: 10}}
+              onPress = {() => this.props.navigation.push("Registration")}
+            >
+              <Text>Create Account</Text>
+            </Button>
+          </View>
+            
+            
+          </View>
         </Content>
       </Container>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  content: {
+    flex           : 1,
+    backgroundColor: '#0b3c5d',
+    justifyContent : 'flex-start'
+  },
+  formStyle: {
+    marginTop  : 30,
+    marginLeft : 15,
+    marginRight: 15
+  }
+});

@@ -34,7 +34,7 @@ export default class HomeScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Proper Recovery</Title>
+          <Title>Create A Plan</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -51,13 +51,14 @@ export default class HomeScreen extends Component {
         
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
           <Form>
-            <Item stackedLabel>
+            <Item inlineLabel>
               <Label>Plan Name</Label>
               <Input />
             </Item>
 
-            <Item>
-            <Input placeholder='Exercise Name'/>
+            <Item inlineLabel>
+            <Label>Exercise Name</Label>
+            <Input/>
             <Button transparent onPress = {() => { this.props.navigation.push("AddExerciseScreen"); }}>
               <Text>
                 Add

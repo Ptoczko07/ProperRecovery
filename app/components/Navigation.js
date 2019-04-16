@@ -4,35 +4,35 @@ import {
   createSwitchNavigator
 } from "react-navigation";
 //import the neccesary view (import [viewName] from "../views/[viewName]")
-import SuggestedPlan from "../views/SuggestedPlanScreen";
-import HomeScreen from "../views/HomeScreen";
-import CreatePlan from "../views/CreatePlanSelection";
 import Registration from "../views/Registration";
 import Login from "../views/Login";
 
-//Patryks stuff
+import HomeScreen from "../views/HomeScreen";
+import SuggestedPlan from "../views/SuggestedPlanScreen";
 import CreatePlanSelection from "../views/CreatePlanSelection";
 import SelectPlanScreen from "../views/SelectPlanScreen";
 import CreatePlanScreen from "../views/CreatePlanScreen";
 import AddExerciseScreen from "../views/AddExerciseScreen";
+import WeeklyScheduleScreen from "../views/WeeklyScheduleScreen"
 
 const RootStack = createStackNavigator({
-  HomeScreen: HomeScreen,
-  SuggestedPlan: SuggestedPlan,
-  CreatePlanSelection: CreatePlanSelection,
-  SelectPlanScreen: SelectPlanScreen,
-  CreatePlanScreen: CreatePlanScreen,
-  AddExerciseScreen: AddExerciseScreen
+  HomeScreen          : HomeScreen,
+  SuggestedPlan       : SuggestedPlan,
+  CreatePlanSelection : CreatePlanSelection,
+  SelectPlanScreen    : SelectPlanScreen,
+  CreatePlanScreen    : CreatePlanScreen,
+  AddExerciseScreen   : AddExerciseScreen,
+  WeeklyScheduleScreen: WeeklyScheduleScreen
 });
 const LoginStack = createStackNavigator({
-  Login: Login,
+  Login       : Login,
   Registration: Registration
 });
 
 export default createAppContainer(
   createSwitchNavigator(
     {
-      RootStack: RootStack,
+      RootStack : RootStack,
       LoginStack: LoginStack
     },
     {

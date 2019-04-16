@@ -11,13 +11,6 @@ import {
   Input,
   ListItem,
   List,
-  H1,
-  Card,
-  CardItem,
-  Thumbnail,
-  Image,
-  Footer,
-  FooterTab,
   Button,
   Left,
   Right,
@@ -25,6 +18,31 @@ import {
   Icon,
   Text
 } from "native-base";
+
+var listOfPrograms = [
+  {
+    "name": "Dislocated Shoulder",
+  },
+  {
+    "name": "Groin Strain",
+  },
+  {
+    "name": "Knee Tear",
+  },
+  {
+    "name": "Lat Pull",
+  },
+  {
+    "name": "Pec Tear",
+  },
+  
+  {
+    "name": "Shoulder Impingment",
+  },
+  {
+    "name": "Shoulder Tear",
+  },
+]
 
 export default class CreatePlanSelection extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -48,10 +66,26 @@ export default class CreatePlanSelection extends Component {
   });
 
   render() {
+    var programList = [];
+    var i           = 0;
+    listOfPrograms.forEach( (program) => {
+      programList.push(
+        <ListItem key={i++}>
+          <Left>
+            <Text>{program.name}</Text>
+          </Left>
+          <Right>
+            <Button transparent>
+              <Icon name="arrow-forward" />
+            </Button>
+          </Right>
+        </ListItem>
+      );
+    });
+    
     return (
       <Container>
-        <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
-          <View style={styles.inputBox}>
+        <View style={styles.inputBox}>
             <Form>
               <Item floatingLabel last>
                 <Label>Enter Injured Body Part Name</Label>
@@ -62,31 +96,9 @@ export default class CreatePlanSelection extends Component {
               </Button>
             </Form>
           </View>
+        <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
           <List style={styles.list}>
-            <ListItem>
-              <Left>
-                <Text>Shoulder Impingment</Text>
-              </Left>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-            <ListItem>
-              <Left>
-                <Text>Dislocated Shoulder</Text>
-              </Left>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-            <ListItem>
-              <Left>
-                <Text>Shoulder Tear</Text>
-              </Left>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
+            {programList}           
           </List>
         </Content>
       </Container>
