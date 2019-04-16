@@ -75,7 +75,7 @@ export default class SuggestedPlanScreen extends Component {
             <Text>{program.name}</Text>
           </Left>
           <Right>
-            <Button transparent onPress={() => {this.props.navigation.push("WeeklyScheduleScreen"); }}>
+            <Button transparent onPress={() => {this.props.navigation.push("PremadePlanScreen"); }}>
               <Icon name="arrow-forward" />
             </Button>
           </Right>
