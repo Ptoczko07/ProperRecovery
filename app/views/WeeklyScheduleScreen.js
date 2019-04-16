@@ -21,6 +21,9 @@ export default class HomeScreen extends Component {
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
         <Left style={{ flex: 1 }}>
+        <Button transparent onPress={() => navigation.goBack()}>
+            <Icon name="arrow-back" />
+        </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
           <Title>Proper Recovery</Title>
