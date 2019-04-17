@@ -21,16 +21,20 @@ import { db } from "../src/config";
 
 // added by manny
 let setCurrentPlan = plan => {
-  db.ref("/currPlan").push({
+  //db.ref("/currPlan").remove();
+  // db.ref("/currPlan").push({
+  //   name: plan
+  // });
+  db.ref("/currPlan").update({
     name: plan
   });
 };
 //
 
 export default class SelectPlanSelection extends Component {
-  // state = {
-  //   name: ""
-  // };
+  state = {
+    plan: ""
+  };
   selectPlan(plan) {
     setCurrentPlan(plan);
   }
@@ -107,7 +111,7 @@ export default class SelectPlanSelection extends Component {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => this.selectPlan("Leg Pain")}>
                   <Text>Select</Text>
                 </Button>
               </Right>

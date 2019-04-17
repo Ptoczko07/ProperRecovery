@@ -28,12 +28,15 @@ export default class HomeScreen extends Component {
   // this will run before render and we use it to read stuff from the database
   //code snippet adapted from this site
   //https://blog.jscrambler.com/integrating-firebase-with-react-native/
-  componentWillMount() {
+  componentDidMount() {
     currentPlan.on("value", snapshot => {
       let data = snapshot.val();
+      console.log(data.name);
       let object = Object.values(data);
-      let plan = object[0].name;
+      //let plan = object[0].name;
+      let plan = data.name;
 
+      //this.setState({ plan });
       this.setState({ plan });
     });
   }
