@@ -3,17 +3,17 @@ import { AppLoading } from "expo";
 import Navigation from "./app/components/Navigation.js";
 import Firebase from "firebase";
 
-const config = {
-  apiKey: "AIzaSyCNioRAajicsFvxYcgLJvNLcB-5vLPqUlY",
-  authDomain: "properrecovery.firebaseapp.com",
-  databaseURL: "https://properrecovery.firebaseio.com",
-  projectId: "properrecovery",
-  storageBucket: "properrecovery.appspot.com",
-  messagingSenderId: "278567486317"
-};
-
-let app = Firebase.initializeApp(config);
-//export const db = app.database();
+// const config = {
+//   apiKey: "AIzaSyCNioRAajicsFvxYcgLJvNLcB-5vLPqUlY",
+//   authDomain: "properrecovery.firebaseapp.com",
+//   databaseURL: "https://properrecovery.firebaseio.com",
+//   projectId: "properrecovery",
+//   storageBucket: "properrecovery.appspot.com",
+//   messagingSenderId: "278567486317"
+// };
+//
+// let app = Firebase.initializeApp(config);
+// //export const db = app.database();
 
 export default class ProperRecovery extends Component {
   constructor(props) {
