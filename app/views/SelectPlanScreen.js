@@ -16,7 +16,29 @@ import {
   Thumbnail
 } from "native-base";
 
+//data base connection
+import { db } from "../src/config";
+
+// added by manny
+let setCurrentPlan = plan => {
+  //db.ref("/currPlan").remove();
+  // db.ref("/currPlan").push({
+  //   name: plan
+  // });
+  db.ref("/currPlan").update({
+    name: plan
+  });
+};
+//
+
 export default class SelectPlanSelection extends Component {
+  state = {
+    plan: ""
+  };
+  selectPlan(plan) {
+    setCurrentPlan(plan);
+  }
+
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
@@ -42,34 +64,58 @@ export default class SelectPlanSelection extends Component {
       <Container>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
           <List style={styles.list}>
-          <ListItem thumbnail>
-            <Left>
-              <Thumbnail square source={{ uri: 'https://www.naplesorthopedic.com/wp-content/uploads/2015/01/shoulder.jpg' }} />
-            </Left>
-            <Body>
-              <Text>Shoulder Impingement</Text>
-              <Text note numberOfLines={1}>April 20, 2019</Text>
-            </Body>
-            <Right>
-              <Button transparent>
-                <Text>Select</Text>
-              </Button>
-            </Right>
-          </ListItem>
-          <ListItem thumbnail>
-            <Left>
-              <Thumbnail square source={{ uri: 'https://universityhealthnews.com/wp-content/uploads/knee-pain-remedies.jpg' }} />
-            </Left>
-            <Body>
-              <Text>Leg Pain</Text>
-              <Text note numberOfLines={1}>September 12, 2018</Text>
-            </Body>
-            <Right>
-              <Button transparent>
-                <Text>Select</Text>
-              </Button>
-            </Right>
-          </ListItem>
+            <ListItem thumbnail>
+              <Left>
+                <Thumbnail
+                  square
+                  source={{
+                    uri:
+                      "https://www.naplesorthopedic.com/wp-content/uploads/2015/01/shoulder.jpg"
+                  }}
+                />
+              </Left>
+              <Body>
+                <Text>Shoulder Impingement</Text>
+                <Text note numberOfLines={1}>
+                  April 20, 2019
+                </Text>
+              </Body>
+              <Right>
+                {/*
+                  added this function to send send the plan name up
+                    TODO: do this so that we send variables and data on a
+                    dynamically growing list
+                  */}
+                <Button
+                  transparent
+                  onPress={() => this.selectPlan("Shoulder Impingement")}
+                >
+                  <Text>Select</Text>
+                </Button>
+              </Right>
+            </ListItem>
+            <ListItem thumbnail>
+              <Left>
+                <Thumbnail
+                  square
+                  source={{
+                    uri:
+                      "https://universityhealthnews.com/wp-content/uploads/knee-pain-remedies.jpg"
+                  }}
+                />
+              </Left>
+              <Body>
+                <Text>Leg Pain</Text>
+                <Text note numberOfLines={1}>
+                  September 12, 2018
+                </Text>
+              </Body>
+              <Right>
+                <Button transparent onPress={() => this.selectPlan("Leg Pain")}>
+                  <Text>Select</Text>
+                </Button>
+              </Right>
+            </ListItem>
           </List>
         </Content>
       </Container>
@@ -79,8 +125,7 @@ export default class SelectPlanSelection extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#ffffff"
-  },
-  
+  }
 });
