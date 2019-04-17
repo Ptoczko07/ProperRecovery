@@ -62,7 +62,7 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.bottomRow}>
           <CustomButton 
-            text    = "Create A New Plan"
+            text    = "Add A Plan"
             onPress = {() => { this.props.navigation.push("CreatePlanSelection") }}
           />
           </View>

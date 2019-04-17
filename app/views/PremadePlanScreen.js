@@ -5,10 +5,9 @@ import {
   Header,
   Title,
   Content,
-  Form,
-  Item,
-  Label,
-  Input,
+  Footer,
+  Card,
+  CardItem,
   ListItem,
   List,
   Button,
@@ -18,30 +17,33 @@ import {
   Icon,
   Text
 } from "native-base";
+import CustomButton from '../components/customButton';
 
-var listOfPrograms = [
+var listOfExercises = [
   {
-    "name": "Dislocated Shoulder",
+    "name": "Arm Extensions",
+    "days": "M W F"
   },
   {
-    "name": "Groin Strain",
+    "name": "Bicep Curl",
+    "days": "M W F"
   },
   {
-    "name": "Knee Tear",
+    "name": "Arm Circles",
+    "days": "M W F"
   },
   {
-    "name": "Lat Pull",
+    "name": "Cross-arm Stretch",
+    "days": "M W F"
   },
   {
-    "name": "Pec Tear",
-  },
-  
-  {
-    "name": "Shoulder Impingment",
+    "name": "Tricep Extension",
+    "days": "M W F"
   },
   {
-    "name": "Shoulder Tear",
-  },
+    "name": "Shoulder Press",
+    "days": "M W F"
+  }
 ]
 
 export default class PremadePlanScreen extends Component {
@@ -54,7 +56,7 @@ export default class PremadePlanScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Suggested Plans</Title>
+          <Title>Suggested Plan</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -66,41 +68,57 @@ export default class PremadePlanScreen extends Component {
   });
 
   render() {
-    var programList = [];
-    var i           = 0;
-    listOfPrograms.forEach( (program) => {
-      programList.push(
+    var exerciseList = [];
+    var i            = 0;
+    listOfExercises.forEach( (exercise) => {
+      exerciseList.push(
         <ListItem key={i++}>
-          <Left>
-            <Text>{program.name}</Text>
-          </Left>
+          <Body>
+            <Text>{exercise.name}</Text>
+          </Body>
+              
           <Right>
-            <Button transparent onPress={() => {this.props.navigation.push("WeeklyScheduleScreen"); }}>
-              <Icon name="arrow-forward" />
-            </Button>
-          </Right>
+            <Text>{exercise.days}</Text>
+          </Right>     
         </ListItem>
       );
     });
     
     return (
       <Container>
-        <View style={styles.inputBox}>
-            <Form>
-              <Item floatingLabel last>
-                <Label>Enter Injured Body Part Name</Label>
-                <Input />
-              </Item>
-              <Button primary style={styles.searchButton}>
-                <Text>Search</Text>
-              </Button>
-            </Form>
-          </View>
+        <Card transparent>
+          <CardItem header>
+            <Text>(Plan Name)</Text>
+          </CardItem>
+            <CardItem>
+              <Body>
+                <Text>
+                  This is a section that will be filled with information
+                  specific to the injury
+                </Text>
+              </Body>
+            </CardItem>
+         </Card>
+         <View
+          style={{
+          borderBottomColor: 'black',
+          borderBottomWidth: 1,
+        }}/>
+        <Text style={ styles.text }>Exercise List: </Text>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
-          <List style={styles.list}>
-            {programList}           
+          
+          
+          <List>
+            {exerciseList}
           </List>
         </Content>
+
+        <Footer>
+        <CustomButton 
+          text    = "Add Program"
+          onPress = {() => { alert("save program") }}
+        />
+        </Footer>
       </Container>
     );
   }
@@ -111,10 +129,11 @@ const styles = StyleSheet.create({
     flex           : 1,
     backgroundColor: "#ffffff"
   },
-  searchButton: {
-    alignSelf: "flex-end"
-  },
   list: {
     marginTop: 20
+  },
+  text:{
+    marginLeft: 15,
+    marginTop : 10
   }
 });

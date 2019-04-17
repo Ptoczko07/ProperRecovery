@@ -80,7 +80,7 @@ export default class CreatePlanScreen extends Component {
           </List>
         </Content>
 
-        <Footer>
+        <Footer style={{backgroundColor: "#0b3c5d"}}>
         <CustomButton 
           text    = "Save Program"
           onPress = {() => { alert("save program") }}

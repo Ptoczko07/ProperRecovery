@@ -101,7 +101,7 @@ export default class AddExerciseScreen extends Component {
             </Item>
           </Form>
         </Content>
-        <Footer>
+        <Footer style={{backgroundColor: "#0b3c5d"}}>
         <CustomButton 
           text    = "Save Exercise"
           onPress = {() => { alert("save program") }}

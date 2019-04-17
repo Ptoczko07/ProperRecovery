@@ -35,7 +35,6 @@ var listOfPrograms = [
   {
     "name": "Pec Tear",
   },
-  
   {
     "name": "Shoulder Impingment",
   },
