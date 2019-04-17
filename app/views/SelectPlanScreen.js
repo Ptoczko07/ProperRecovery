@@ -20,7 +20,7 @@ import {
 import { db } from "../src/config";
 
 // added by manny
-let currentPlan = plan => {
+let setCurrentPlan = plan => {
   db.ref("/currPlan").push({
     name: plan
   });
@@ -28,6 +28,13 @@ let currentPlan = plan => {
 //
 
 export default class SelectPlanSelection extends Component {
+  // state = {
+  //   name: ""
+  // };
+  selectPlan(plan) {
+    setCurrentPlan(plan);
+  }
+
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
@@ -70,9 +77,16 @@ export default class SelectPlanSelection extends Component {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                {/*
+                  added this function to send send the plan name up
+                    TODO: do this so that we send variables and data on a
+                    dynamically growing list
+                  */}
+                <Button
+                  transparent
+                  onPress={() => this.selectPlan("Shoulder Impingement")}
+                >
                   <Text>Select</Text>
-                  onPress={() => }
                 </Button>
               </Right>
             </ListItem>

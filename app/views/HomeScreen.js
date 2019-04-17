@@ -18,16 +18,26 @@ import CustomButton from "../components/customButton";
 
 //data base connection
 import { db } from "../src/config";
-
-// added by manny
-let currentPlan = plan => {
-  db.ref("/currPlan").push({
-    name: plan
-  });
-};
-//
+// we want to read from the variable now
+let currentPlan = db.ref("/currPlan");
 
 export default class HomeScreen extends Component {
+  state = {
+    plan: ""
+  };
+  // this will run before render and we use it to read stuff from the database
+  //code snippet adapted from this site
+  //https://blog.jscrambler.com/integrating-firebase-with-react-native/
+  componentWillMount() {
+    currentPlan.on("value", snapshot => {
+      let data = snapshot.val();
+      let object = Object.values(data);
+      let plan = object[0].name;
+
+      this.setState({ plan });
+    });
+  }
+
   static navigationOptions = ({ navigation }) => ({
     header: (
       <Header style={{ backgroundColor: "#1d2731" }}>
@@ -57,7 +67,7 @@ export default class HomeScreen extends Component {
               }}
             />
             <H1 style={{ paddingTop: 20, color: "white" }}>
-              Welcome Back, (Name)!
+              Welcome Back, (name)!
             </H1>
             <Button
               block
@@ -67,7 +77,7 @@ export default class HomeScreen extends Component {
                 this.props.navigation.push("WeeklyScheduleScreen");
               }}
             >
-              <Text style={styles.text}>Continue with (Schedule Name)</Text>
+              <Text style={styles.text}>Continue with {this.state.plan}</Text>
             </Button>
           </View>
           <View style={styles.middleRow}>
