@@ -24,7 +24,7 @@ const RootStack = createStackNavigator({
   CreatePlanScreen    : CreatePlanScreen,
   AddExerciseScreen   : AddExerciseScreen,
   WeeklyScheduleScreen: WeeklyScheduleScreen,
-  PremadePlanScreen   : PremadePlanScreen
+  PremadePlanScreen   : PremadePlanScreen,
 });
 const LoginStack = createStackNavigator({
   Login       : Login,
