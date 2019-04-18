@@ -24,6 +24,7 @@ import {
 } from "native-base";
 import CustomButton from "../components/customButton";
 import { db } from "../src/config";
+import { StackActions } from "react-navigation";
 
 // separate list so we keep UI and state components separate
 // both should display same data though
@@ -42,13 +43,13 @@ var workOutPlan = {
 var planName = "";
 var exerciseName = "";
 
-let setCurrentPlan = plan => {
+let uploadPlan = plan => {
   //db.ref("/currPlan").remove();
   // db.ref("/currPlan").push({
   //   name: plan
   // });
   db.ref("/planList").push({
-    planName: planName
+    workOutPlan
   });
 };
 
@@ -73,6 +74,20 @@ export default class CreatePlanScreen extends Component {
     console.log(workOutPlan);
     this.forceUpdate();
     //this.props.navigation.push("AddExerciseScreen");
+  }
+
+  SaveProgram() {
+    uploadPlan();
+  }
+
+  componentDidMount() {
+    workOutPlan = {
+      planName: "",
+      listOfExercises: []
+    };
+    planName = "";
+    texerciseName = "";
+    this.forceUpdate();
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -145,6 +160,7 @@ export default class CreatePlanScreen extends Component {
             text="Save Program"
             onPress={() => {
               alert("save program");
+              this.SaveProgram();
             }}
           />
         </Footer>
