@@ -80,6 +80,7 @@ export default class CreatePlanScreen extends Component {
     uploadPlan();
   }
 
+  //using this to wipe state when we move between pages
   componentDidMount() {
     workOutPlan = {
       planName: "",
