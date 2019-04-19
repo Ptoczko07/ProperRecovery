@@ -31,7 +31,7 @@ export default class HomeScreen extends Component {
   componentDidMount() {
     currentPlan.on("value", snapshot => {
       let data = snapshot.val();
-      console.log(data.name);
+      //console.log(data.name);
       let object = Object.values(data);
       //let plan = object[0].name;
       let plan = data.name;
@@ -65,7 +65,7 @@ export default class HomeScreen extends Component {
             <Thumbnail
               large
               source={{
-                uri: 
+                uri:
                   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1031&q=80"
               }}
             />
@@ -75,8 +75,8 @@ export default class HomeScreen extends Component {
             <Button
               block
               info
-              style   = {styles.continueButton}
-              onPress = {() => {
+              style={styles.continueButton}
+              onPress={() => {
                 this.props.navigation.push("WeeklyScheduleScreen");
               }}
             >
@@ -85,16 +85,16 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.middleRow}>
             <CustomButton
-              text    = "Select From Current Plans"
-              onPress = {() => {
+              text="Select From Current Plans"
+              onPress={() => {
                 this.props.navigation.push("SelectPlanScreen");
               }}
             />
           </View>
           <View style={styles.bottomRow}>
             <CustomButton
-              text    = "Add A Plan"
-              onPress = {() => {
+              text="Add A Plan"
+              onPress={() => {
                 this.props.navigation.push("CreatePlanSelection");
               }}
             />
@@ -107,34 +107,34 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#9db5b2"
   },
   topRow: {
     backgroundColor: "#0b3c5d",
-    alignItems     : "center",
-    flexDirection  : "column",
-    padding        : 25,
-    flex           : 2
+    alignItems: "center",
+    flexDirection: "column",
+    padding: 25,
+    flex: 2
   },
   middleRow: {
-    flex           : 1,
-    justifyContent : "center",
-    alignItems     : "center",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#328cc1"
   },
   bottomRow: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#1d2731",
-    justifyContent : "center",
-    alignItems     : "center",
-    color          : "white"
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white"
   },
   continueButton: {
-    marginTop: 30,
+    marginTop: 30
   },
   text: {
-    color    : "white",
-    textAlign: 'center',
+    color: "white",
+    textAlign: "center"
   }
 });
