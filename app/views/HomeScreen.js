@@ -42,7 +42,7 @@ export default class HomeScreen extends Component {
       <Header style={{ backgroundColor: "#1d2731" }}>
         <Left style={{ flex: 1 }} />
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Proper Recovery</Title>
+          <Title style={{ color: "white" }}>Proper Recovery</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>

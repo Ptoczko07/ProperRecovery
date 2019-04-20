@@ -24,16 +24,7 @@ import {
 } from "native-base";
 import CustomButton from "../components/customButton";
 import { db } from "../src/config";
-import { StackActions } from "react-navigation";
-
-// separate list so we keep UI and state components separate
-// both should display same data though
-// var listOfExercises = [
-//   {
-//     name: "Arm Extensions",
-//     days: "M W F"
-//   }
-// ];
+import { StackActions, NavigationEvents } from "react-navigation";
 
 var workOutPlan = {
   planName: "",
@@ -42,12 +33,8 @@ var workOutPlan = {
 
 var planName = "";
 var exerciseName = "";
-
+var days = "";
 let uploadPlan = plan => {
-  //db.ref("/currPlan").remove();
-  // db.ref("/currPlan").push({
-  //   name: plan
-  // });
   db.ref("/planList").push({
     workOutPlan
   });
@@ -65,11 +52,16 @@ export default class CreatePlanScreen extends Component {
     ]
   };
 
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
+
   addExerciseToList() {
-    workOutPlan.planName = currPlanName;
+    workOutPlan.planName = planName;
     workOutPlan.listOfExercises.push({
       name: exerciseName,
-      days: "M W F"
+      days: days
     });
     console.log(workOutPlan);
     this.forceUpdate();
@@ -80,6 +72,12 @@ export default class CreatePlanScreen extends Component {
     uploadPlan();
   }
 
+  updateEverything() {
+    console.log("getting to udpate everything");
+    console.log(days);
+    this.forceUpdate();
+  }
+
   //using this to wipe state when we move between pages
   componentDidMount() {
     workOutPlan = {
@@ -88,6 +86,16 @@ export default class CreatePlanScreen extends Component {
     };
     planName = "";
     texerciseName = "";
+
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      //console.log("back at create a plan");
+      days = this.props.navigation.getParam("days", "");
+      if (days != "") {
+        this.addExerciseToList();
+      }
+    });
+
     this.forceUpdate();
   }
 
@@ -112,6 +120,11 @@ export default class CreatePlanScreen extends Component {
   });
 
   render() {
+    //console.log("back at create a plan");
+    //days = this.props.navigation.getParam("days", "");
+    //console.log(days);
+    //this.addExerciseToList();
+
     //TODO move this to its own function and stuff
     var exerciseList = [];
     var i = 0;
@@ -135,7 +148,8 @@ export default class CreatePlanScreen extends Component {
           <Form>
             <Item inlineLabel>
               <Label>Plan Name</Label>
-              <Input onChangeText={name => (currPlanName = name)} />
+              {/*<Input onChangeText={name => (currPlanName = name)} />*/}
+              <Input onChangeText={name => (planName = name)} />
             </Item>
 
             <Item inlineLabel>
@@ -144,8 +158,8 @@ export default class CreatePlanScreen extends Component {
               <Button
                 transparent
                 onPress={() => {
-                  this.addExerciseToList();
-                  //this.props.navigation.push("AddExerciseScreen");
+                  this.props.navigation.push("AddExerciseScreen");
+                  //this.addExerciseToList();
                 }}
               >
                 <Text>Add</Text>
