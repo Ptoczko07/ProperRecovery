@@ -55,11 +55,8 @@ export default class WeeklyScheduleScreen extends Component {
           listOfExercises = plan.workOutPlan.listOfExercises;
         }
       });
-      console.log(listOfExercises[0].days[0]);
       this.setState(listOfExercises);
     });
-
-    //console.log(state);
   }
 
   ExerciseListParser() {}
@@ -141,23 +138,6 @@ export default class WeeklyScheduleScreen extends Component {
       }
       i = i + 1;
     });
-
-    //var exerciseList = []
-    // var i = 0;
-    // listOfExercises.forEach(exercise => {
-    //   exerciseList.push(
-    //     <ListItem key={i++}>
-    //       <CheckBox
-    //         checked={false}
-    //         onPress={() => (this.checked = !this.checked)}
-    //         color="red"
-    //       />
-    //       <Body>
-    //         <Text>{exercise.name}</Text>
-    //       </Body>
-    //     </ListItem>
-    //   );
-    // });
 
     return (
       <Container>

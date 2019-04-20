@@ -31,12 +31,8 @@ export default class HomeScreen extends Component {
   componentDidMount() {
     currentPlan.on("value", snapshot => {
       let data = snapshot.val();
-      //console.log(data.name);
       let object = Object.values(data);
-      //let plan = object[0].name;
       let plan = data.name;
-
-      //this.setState({ plan });
       this.setState({ plan });
     });
   }
