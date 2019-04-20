@@ -61,6 +61,7 @@ export default class AddExerciseScreen extends Component {
   };
 
   createStringOfDays() {
+    days = "";
     if (this.state.monday) {
       days = days + "M";
     }
