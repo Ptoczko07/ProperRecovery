@@ -21,27 +21,156 @@ import {
 
 var listOfPrograms = [
   {
-    "name": "Dislocated Shoulder",
+    planName: "Dislocated Shoulder",
+    listOfExercises: [
+      {
+        name: "Shoulder Flexion (lying down)",
+        days: "MTF"
+      },
+      {
+        name: "Child's Pose",
+        days: "MRFU"
+      },
+      {
+        name: "Thread the Needle",
+        days: "MSWF"
+      },
+      {
+        name: "Elbow-Out Rotator Stretch",
+        days: "MWF"
+      },
+      {
+        name: "Cross-Body Shoulder Stretch",
+        days: "MTWRF"
+      }
+    ]
   },
   {
-    "name": "Groin Strain",
+    planName: "Groin Strain",
+    listOfExercises: [
+      {
+        name: "Glute Bridge",
+        days: "MTF"
+      },
+      {
+        name: "Hip Rotations (Push-up Position)",
+        days: "MRFU"
+      },
+      {
+        name: "Jump and Reach",
+        days: "MSWF"
+      },
+      {
+        name: "Seated Butterfly Stretch",
+        days: "MWF"
+      },
+      {
+        name: "Seated Straddle Stretch",
+        days: "MTWRF"
+      }
+    ]
   },
   {
-    "name": "Knee Tear",
+    planName: "Knee Tear",
+    listOfExercises: [
+      {
+        name: "Lunging Hip Flexor Stretch",
+        days: "MTF"
+      },
+      {
+        name: "Standing Hamstring Stretch",
+        days: "MRFU"
+      },
+      {
+        name: "Calf Stretch",
+        days: "MSWF"
+      },
+      {
+        name: "Kneeling Quad Stretch",
+        days: "MWF"
+      },
+      {
+        name: "Side Lunge",
+        days: "MTWRF"
+      }
+    ]
   },
   {
-    "name": "Lat Pull",
+    planName: "Lat Pull",
+    listOfExercises: [
+      {
+        name: "Active Lat Stretch",
+        days: "MTF"
+      },
+      {
+        name: "Foam Roll Your Lats",
+        days: "MRFU"
+      },
+      {
+        name: "90 Lat Stretch",
+        days: "MSWF"
+      },
+      {
+        name: "Stability Ball Shoulder Stabilization",
+        days: "MWF"
+      },
+      {
+        name: "Downward-facing Dog",
+        days: "MTWRF"
+      }
+    ]
   },
   {
-    "name": "Pec Tear",
+    planName: "Pec Tear",
+    listOfExercises: [
+      {
+        name: "Side Lying Parallel Arm Chest Stretch",
+        days: "MTF"
+      },
+      {
+        name: "Wall Stretch",
+        days: "MRFU"
+      },
+      {
+        name: "Elbow Wrap Stretch",
+        days: "MSWF"
+      },
+      {
+        name: "Back Bend Stretch",
+        days: "MWF"
+      },
+      {
+        name: "Stability Ball Stretch",
+        days: "MTWRF"
+      }
+    ]
   },
   {
-    "name": "Shoulder Impingment",
-  },
-  {
-    "name": "Shoulder Tear",
-  },
-]
+    planName: "Shoulder Tear",
+    listOfExercises: [
+      {
+        name: "Barbell Push Press",
+        days: "MTF"
+      },
+      {
+        name: "Dumbbell Incline Row",
+        days: "MRFU"
+      },
+      {
+        name: "Arnold Press",
+        days: "MSWF"
+      },
+      {
+        name: "Dumbbell Lateral Raise",
+        days: "MWF"
+      },
+      {
+        name: "Standing Military Press",
+        days: "MTWRF"
+      }
+    ]
+  }
+];
 
 export default class SuggestedPlanScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -53,7 +182,7 @@ export default class SuggestedPlanScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Suggested Plans</Title>
+          <Title style={{ color: "white" }}>Suggested Plans</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -66,39 +195,44 @@ export default class SuggestedPlanScreen extends Component {
 
   render() {
     var programList = [];
-    var i           = 0;
-    listOfPrograms.forEach( (program) => {
+    var i = 0;
+    listOfPrograms.forEach(program => {
       programList.push(
         <ListItem key={i++}>
           <Left>
-            <Text>{program.name}</Text>
+            <Text>{program.planName}</Text>
           </Left>
           <Right>
-            <Button transparent onPress={() => {this.props.navigation.push("PremadePlanScreen"); }}>
+            <Button
+              transparent
+              onPress={() => {
+                this.props.navigation.push("PremadePlanScreen", {
+                  workOutPlan: program
+                });
+              }}
+            >
               <Icon name="arrow-forward" />
             </Button>
           </Right>
         </ListItem>
       );
     });
-    
+
     return (
       <Container>
         <View style={styles.inputBox}>
-            <Form>
-              <Item floatingLabel last>
-                <Label>Enter Injured Body Part Name</Label>
-                <Input />
-              </Item>
-              <Button primary style={styles.searchButton}>
-                <Text>Search</Text>
-              </Button>
-            </Form>
-          </View>
+          <Form>
+            <Item floatingLabel last>
+              <Label>Enter Injured Body Part Name</Label>
+              <Input />
+            </Item>
+            <Button primary style={styles.searchButton}>
+              <Text>Search</Text>
+            </Button>
+          </Form>
+        </View>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
-          <List style={styles.list}>
-            {programList}           
-          </List>
+          <List style={styles.list}>{programList}</List>
         </Content>
       </Container>
     );
@@ -107,7 +241,7 @@ export default class SuggestedPlanScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#ffffff"
   },
   searchButton: {

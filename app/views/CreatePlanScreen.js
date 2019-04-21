@@ -108,7 +108,7 @@ export default class CreatePlanScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Create A Plan</Title>
+          <Title style={{ color: "white" }}>Create A Plan</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>

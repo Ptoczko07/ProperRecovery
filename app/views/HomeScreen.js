@@ -66,7 +66,7 @@ export default class HomeScreen extends Component {
               }}
             />
             <H1 style={{ paddingTop: 20, color: "white" }}>
-              Welcome Back, (name)!
+              Welcome Back, Patryk!
             </H1>
             <Button
               block

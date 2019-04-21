@@ -19,7 +19,7 @@ import {
   Icon,
   Text
 } from "native-base";
-import CustomButton from '../components/customButton';
+import CustomButton from "../components/customButton";
 
 export default class CreatePlanSelection extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -31,7 +31,7 @@ export default class CreatePlanSelection extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Plans</Title>
+          <Title style={{ color: "white" }}>Plans</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -47,16 +47,20 @@ export default class CreatePlanSelection extends Component {
       <Container>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
           <View style={styles.topRow}>
-          <CustomButton 
-            text    = "Find Suggested Plans"
-            onPress = {() => { this.props.navigation.push("SuggestedPlan"); }}
-          />
+            <CustomButton
+              text="Find Suggested Plans"
+              onPress={() => {
+                this.props.navigation.push("SuggestedPlan");
+              }}
+            />
           </View>
           <View style={styles.bottomRow}>
-          <CustomButton 
-            text    = "Create Plan"
-            onPress = {() => { this.props.navigation.push("CreatePlanScreen"); }}
-          />
+            <CustomButton
+              text="Create Plan"
+              onPress={() => {
+                this.props.navigation.push("CreatePlanScreen");
+              }}
+            />
           </View>
         </Content>
       </Container>
@@ -66,24 +70,24 @@ export default class CreatePlanSelection extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#9db5b2"
   },
   topRow: {
     backgroundColor: "#0b3c5d",
-    alignItems     : "center",
-    justifyContent : "center",
-    flex           : 1
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1
   },
 
   bottomRow: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#1d2731",
-    justifyContent : "center",
-    alignItems     : "center"
+    justifyContent: "center",
+    alignItems: "center"
   },
   text: {
-    color   : "white",
+    color: "white",
     fontSize: 27
   }
 });

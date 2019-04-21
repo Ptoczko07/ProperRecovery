@@ -17,34 +17,20 @@ import {
   Icon,
   Text
 } from "native-base";
-import CustomButton from '../components/customButton';
+import CustomButton from "../components/customButton";
+import { db } from "../src/config";
 
-var listOfExercises = [
-  {
-    "name": "Arm Extensions",
-    "days": "M W F"
-  },
-  {
-    "name": "Bicep Curl",
-    "days": "M W F"
-  },
-  {
-    "name": "Arm Circles",
-    "days": "M W F"
-  },
-  {
-    "name": "Cross-arm Stretch",
-    "days": "M W F"
-  },
-  {
-    "name": "Tricep Extension",
-    "days": "M W F"
-  },
-  {
-    "name": "Shoulder Press",
-    "days": "M W F"
-  }
-]
+let currentPlanName = db.ref("/currPlan");
+let uploadPlan = workOutPlan => {
+  db.ref("/planList").push({
+    workOutPlan
+  });
+};
+let setCurrentPlan = plan => {
+  db.ref("/currPlan").update({
+    name: plan
+  });
+};
 
 export default class PremadePlanScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -56,7 +42,7 @@ export default class PremadePlanScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Suggested Plan</Title>
+          <Title style={{ color: "white" }}>Suggested Plan</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -67,57 +53,66 @@ export default class PremadePlanScreen extends Component {
     )
   });
 
+  SaveworkOutPlan(workOutPlan) {
+    setCurrentPlan(workOutPlan.planName);
+    uploadPlan(workOutPlan);
+  }
+
   render() {
+    const { navigation } = this.props;
+    const workOutPlan = navigation.getParam("workOutPlan", "");
+    console.log(workOutPlan);
+
     var exerciseList = [];
-    var i            = 0;
-    listOfExercises.forEach( (exercise) => {
+    var i = 0;
+    workOutPlan.listOfExercises.forEach(exercise => {
       exerciseList.push(
         <ListItem key={i++}>
           <Body>
             <Text>{exercise.name}</Text>
           </Body>
-              
+
           <Right>
             <Text>{exercise.days}</Text>
-          </Right>     
+          </Right>
         </ListItem>
       );
     });
-    
+
     return (
       <Container>
         <Card transparent>
           <CardItem header>
             <Text>(Plan Name)</Text>
           </CardItem>
-            <CardItem>
-              <Body>
-                <Text>
-                  This is a section that will be filled with information
-                  specific to the injury
-                </Text>
-              </Body>
-            </CardItem>
-         </Card>
-         <View
+          <CardItem>
+            <Body>
+              <Text>
+                This is a section that will be filled with information specific
+                to the injury
+              </Text>
+            </Body>
+          </CardItem>
+        </Card>
+        <View
           style={{
-          borderBottomColor: 'black',
-          borderBottomWidth: 1,
-        }}/>
-        <Text style={ styles.text }>Exercise List: </Text>
+            borderBottomColor: "black",
+            borderBottomWidth: 1
+          }}
+        />
+        <Text style={styles.text}>Exercise List: </Text>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
-          
-          
-          <List>
-            {exerciseList}
-          </List>
+          <List>{exerciseList}</List>
         </Content>
 
-        <Footer>
-        <CustomButton 
-          text    = "Add Program"
-          onPress = {() => { alert("save program") }}
-        />
+        <Footer style={{ backgroundColor: "#0b3c5d" }}>
+          <CustomButton
+            text="Add workOutPlan"
+            onPress={() => {
+              alert("save workOutPlan");
+              this.SaveworkOutPlan(workOutPlan);
+            }}
+          />
         </Footer>
       </Container>
     );
@@ -126,14 +121,14 @@ export default class PremadePlanScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#ffffff"
   },
   list: {
     marginTop: 20
   },
-  text:{
+  text: {
     marginLeft: 15,
-    marginTop : 10
+    marginTop: 10
   }
 });
