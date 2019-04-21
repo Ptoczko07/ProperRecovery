@@ -20,11 +20,12 @@ import {
 import { db } from "../src/config";
 
 // added by manny
+let currentPlanName = db.ref("/currPlan");
+let planList = db.ref("/planList");
+listOfPlanNames = [];
+
+// added by manny
 let setCurrentPlan = plan => {
-  //db.ref("/currPlan").remove();
-  // db.ref("/currPlan").push({
-  //   name: plan
-  // });
   db.ref("/currPlan").update({
     name: plan
   });
@@ -37,6 +38,20 @@ export default class SelectPlanSelection extends Component {
   };
   selectPlan(plan) {
     setCurrentPlan(plan);
+  }
+
+  // fetch the names of all the plans
+  componentDidMount() {
+    listOfPlanNames = [];
+    planList.on("value", snapshot => {
+      let data = snapshot.val();
+      let object = Object.values(data);
+      object.forEach(plan => {
+        listOfPlanNames.push(plan.workOutPlan.planName);
+      });
+      console.log(listOfPlanNames);
+      this.setState(listOfPlanNames);
+    });
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -59,64 +74,50 @@ export default class SelectPlanSelection extends Component {
     )
   });
 
+  appendListItem(planName, i) {
+    return (
+      <ListItem key={i} thumbnail>
+        <Left>
+          <Thumbnail
+            square
+            source={{
+              uri:
+                "https://www.naplesorthopedic.com/wp-content/uploads/2015/01/shoulder.jpg"
+            }}
+          />
+        </Left>
+        <Body>
+          <Text>{planName}</Text>
+          <Text note numberOfLines={1}>
+            April 20, 2019
+          </Text>
+        </Body>
+        <Right>
+          <Button
+            transparent
+            onPress={() => {
+              this.selectPlan(planName);
+              this.props.navigation.push("HomeScreen");
+            }}
+          >
+            <Text>Select</Text>
+          </Button>
+        </Right>
+      </ListItem>
+    );
+  }
+
   render() {
+    UIplanList = [];
+    i = 0;
+    listOfPlanNames.forEach(planName => {
+      UIplanList.push(this.appendListItem(planName, i));
+      i++;
+    });
     return (
       <Container>
         <Content style={styles.content} contentContainerStyle={{ flexGrow: 1 }}>
-          <List style={styles.list}>
-            <ListItem thumbnail>
-              <Left>
-                <Thumbnail
-                  square
-                  source={{
-                    uri:
-                      "https://www.naplesorthopedic.com/wp-content/uploads/2015/01/shoulder.jpg"
-                  }}
-                />
-              </Left>
-              <Body>
-                <Text>Shoulder Impingement</Text>
-                <Text note numberOfLines={1}>
-                  April 20, 2019
-                </Text>
-              </Body>
-              <Right>
-                {/*
-                  added this function to send send the plan name up
-                    TODO: do this so that we send variables and data on a
-                    dynamically growing list
-                  */}
-                <Button
-                  transparent
-                  onPress={() => this.selectPlan("Shoulder Impingement")}
-                >
-                  <Text>Select</Text>
-                </Button>
-              </Right>
-            </ListItem>
-            <ListItem thumbnail>
-              <Left>
-                <Thumbnail
-                  square
-                  source={{
-                    uri:
-                      "https://universityhealthnews.com/wp-content/uploads/knee-pain-remedies.jpg"
-                  }}
-                />
-              </Left>
-              <Body>
-                <Text>Leg Pain</Text>
-                <Text note numberOfLines={1}>
-                  September 12, 2018
-                </Text>
-              </Body>
-              <Right>
-                <Button transparent onPress={() => this.selectPlan("Leg Pain")}>
-                  <Text>Select</Text>
-                </Button>
-              </Right>
-            </ListItem>
-          </List>
+          <List style={styles.list}>{UIplanList}</List>
         </Content>
       </Container>
     );

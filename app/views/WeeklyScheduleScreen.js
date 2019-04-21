@@ -47,9 +47,7 @@ export default class WeeklyScheduleScreen extends Component {
     // parse the workout tree until we find what we want
     currentPlan.on("value", snapshot => {
       let data = snapshot.val();
-      //console.log(data);
       let object = Object.values(data);
-      //console.log(object);
       object.forEach(plan => {
         if (plan.workOutPlan.planName == currPlanName) {
           listOfExercises = plan.workOutPlan.listOfExercises;
