@@ -68,7 +68,7 @@ export default class WeeklyScheduleScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Weekly Schedule</Title>
+          <Title style={{ color: "white" }}>Weekly Schedule</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
