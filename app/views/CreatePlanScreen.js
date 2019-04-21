@@ -108,7 +108,7 @@ export default class CreatePlanScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Create A Plan</Title>
+          <Title style={{ color: "white" }}>Create A Plan</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -158,8 +158,12 @@ export default class CreatePlanScreen extends Component {
               <Button
                 transparent
                 onPress={() => {
-                  this.props.navigation.push("AddExerciseScreen");
-                  //this.addExerciseToList();
+                  if (planName == "") {
+                    alert("Enter Plan Name");
+                    //this.addExerciseToList();
+                  } else {
+                    this.props.navigation.push("AddExerciseScreen");
+                  }
                 }}
               >
                 <Text>Add</Text>
@@ -174,7 +178,7 @@ export default class CreatePlanScreen extends Component {
           <CustomButton
             text="Save Program"
             onPress={() => {
-              alert("save program");
+              alert("program Saved");
               this.SaveProgram();
             }}
           />

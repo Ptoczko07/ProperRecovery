@@ -63,7 +63,7 @@ export default class SelectPlanSelection extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>Plans List</Title>
+          <Title style={{ color: "white" }}>Plans List</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
