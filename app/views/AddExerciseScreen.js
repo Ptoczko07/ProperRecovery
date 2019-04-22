@@ -32,7 +32,6 @@ export default class AddExerciseScreen extends Component {
           <Button
             transparent
             onPress={() => {
-              console.log(days);
               navigation.navigate("CreatePlanScreen", { days: days });
             }}
           >
@@ -40,7 +39,7 @@ export default class AddExerciseScreen extends Component {
           </Button>
         </Left>
         <Body style={{ flex: 2, alignItems: "center" }}>
-          <Title>(Exercise Name)</Title>
+          <Title style={{ color: "white" }}>Proper Recovery</Title>
         </Body>
         <Right style={{ flex: 1 }}>
           <Button transparent>
@@ -51,13 +50,13 @@ export default class AddExerciseScreen extends Component {
     )
   });
   state = {
-    monday: false,
-    tuesday: false,
+    monday   : false,
+    tuesday  : false,
     wednesday: false,
-    thursday: false,
-    friday: false,
-    saturday: false,
-    sunday: false
+    thursday : false,
+    friday   : false,
+    saturday : false,
+    sunday   : false
   };
 
   createStringOfDays() {
@@ -92,9 +91,9 @@ export default class AddExerciseScreen extends Component {
           <H1 style={{ margin: 5 }}>Select Days</H1>
           <ListItem>
             <CheckBox
-              checked={this.state.monday}
-              onPress={() => this.setState({ monday: !this.state.monday })}
-              color="red"
+              checked = {this.state.monday}
+              onPress = {() => this.setState({ monday: !this.state.monday })}
+              color   = "red"
             />
             <Body>
               <Text>Monday</Text>
@@ -102,9 +101,9 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.tuesday}
-              onPress={() => this.setState({ tuesday: !this.state.tuesday })}
-              color="blue"
+              checked = {this.state.tuesday}
+              onPress = {() => this.setState({ tuesday: !this.state.tuesday })}
+              color   = "blue"
             />
             <Body>
               <Text>Tuesday</Text>
@@ -112,11 +111,11 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.wednesday}
-              onPress={() =>
+              checked = {this.state.wednesday}
+              onPress = {() =>
                 this.setState({ wednesday: !this.state.wednesday })
               }
-              color="red"
+              color = "red"
             />
             <Body>
               <Text>Wednesday</Text>
@@ -124,9 +123,9 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.thursday}
-              onPress={() => this.setState({ thursday: !this.state.thursday })}
-              color="blue"
+              checked = {this.state.thursday}
+              onPress = {() => this.setState({ thursday: !this.state.thursday })}
+              color   = "blue"
             />
             <Body>
               <Text>Thursday</Text>
@@ -134,9 +133,9 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.friday}
-              onPress={() => this.setState({ friday: !this.state.friday })}
-              color="red"
+              checked = {this.state.friday}
+              onPress = {() => this.setState({ friday: !this.state.friday })}
+              color   = "red"
             />
             <Body>
               <Text>Friday</Text>
@@ -144,9 +143,9 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.saturday}
-              onPress={() => this.setState({ saturday: !this.state.saturday })}
-              color="blue"
+              checked = {this.state.saturday}
+              onPress = {() => this.setState({ saturday: !this.state.saturday })}
+              color   = "blue"
             />
             <Body>
               <Text>Saturday</Text>
@@ -154,9 +153,9 @@ export default class AddExerciseScreen extends Component {
           </ListItem>
           <ListItem>
             <CheckBox
-              checked={this.state.sunday}
-              onPress={() => this.setState({ sunday: !this.state.sunday })}
-              color="red"
+              checked = {this.state.sunday}
+              onPress = {() => this.setState({ sunday: !this.state.sunday })}
+              color   = "red"
             />
             <Body>
               <Text>Sunday</Text>
@@ -175,11 +174,9 @@ export default class AddExerciseScreen extends Component {
         </Content>
         <Footer style={{ backgroundColor: "#0b3c5d" }}>
           <CustomButton
-            text="Save Exercise"
-            onPress={() => {
+            text    = "Save Exercise"
+            onPress = {() => {
               this.createStringOfDays();
-              //console.log(days);
-              //this.navigation.goBack();
             }}
           />
         </Footer>
@@ -190,7 +187,7 @@ export default class AddExerciseScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#ffffff"
   }
 });

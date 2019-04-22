@@ -24,8 +24,8 @@ import {
 
 export default class Registration extends Component {
   state = {
-    email: "martinezemmanuel40@gmail.com",
-    password: "something!!123",
+    email    : "martinezemmanuel40@gmail.com",
+    password : "something!!123",
     selected2: undefined
   };
   userState = { age: "", height: "", weight: "" };
@@ -39,7 +39,7 @@ export default class Registration extends Component {
         this.props.navigation.navigate("RootStack");
       })
       .catch(function(error) {
-        var errorCode = error.code;
+        var errorCode    = error.code;
         var errorMessage = error.message;
       });
   }
@@ -76,15 +76,15 @@ export default class Registration extends Component {
                 <Item inlineLabel>
                   <Label>Email</Label>
                   <Input
-                    value={this.state.email}
-                    onChangeText={email => this.setState({ email })}
+                    // value={this.state.email}
+                    onChangeText = {email => this.setState({ email })}
                   />
                 </Item>
 
                 <Item inlineLabel>
                   <Label>Age</Label>
                   <Input
-                    keyboardType="numeric"
+                    keyboardType = "numeric"
                     // value        = {this.userState}
                     // onChangeText = {age => this.setState({ age })}
                   />
@@ -92,7 +92,7 @@ export default class Registration extends Component {
                 <Item inlineLabel>
                   <Label>Height</Label>
                   <Input
-                    keyboardType="numeric"
+                    keyboardType = "numeric"
                     // value        = {this.userState}
                     // onChangeText = {height => this.setState({ height })}
                   />
@@ -100,7 +100,7 @@ export default class Registration extends Component {
                 <Item inlineLabel>
                   <Label>Weight</Label>
                   <Input
-                    keyboardType="numeric"
+                    keyboardType = "numeric"
                     // value        = {this.userState}
                     // onChangeText = {weight => this.setState({ weight })}
                   />
@@ -108,14 +108,14 @@ export default class Registration extends Component {
                 <Item inlineLabel picker>
                   <Label>Gender</Label>
                   <Picker
-                    mode="dropdown"
-                    iosIcon={<Icon name="arrow-down" />}
-                    style={{ width: undefined }}
-                    placeholder="Select your gender"
-                    placeholderStyle={{ color: "#bfc6ea" }}
-                    placeholderIconColor="#007aff"
-                    selectedValue={this.state.selected2}
-                    onValueChange={this.onValueChange2.bind(this)}
+                    mode                 = "dropdown"
+                    iosIcon              = {<Icon name="arrow-down" />}
+                    style                = {{ width: undefined }}
+                    placeholder          = "Select your gender"
+                    placeholderStyle     = {{ color: "#bfc6ea" }}
+                    placeholderIconColor = "#007aff"
+                    selectedValue        = {this.state.selected2}
+                    onValueChange        = {this.onValueChange2.bind(this)}
                   >
                     <Picker.Item label="" value="key0" />
                     <Picker.Item label="Male" value="key1" />
@@ -125,16 +125,16 @@ export default class Registration extends Component {
                 <Item last>
                   <Label>Password</Label>
                   <Input
-                    secureTextEntry={true}
-                    value={this.state.password}
-                    onChangeText={password => this.setState({ password })}
+                    secureTextEntry = {true}
+                    // value={this.state.password}
+                    onChangeText = {password => this.setState({ password })}
                   />
                 </Item>
               </Form>
               {/*
             remember to use this syntax for the onPress in order to
             not trigger automatically when rendering
-            () =>
+            () => 
             */}
               <Button block onPress={() => this.CreateAccount()}>
                 <Text>Register</Text>
@@ -149,13 +149,13 @@ export default class Registration extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#0b3c5d",
-    justifyContent: "flex-start"
+    justifyContent : "flex-start"
   },
   formStyle: {
-    marginTop: 30,
-    marginLeft: 15,
+    marginTop  : 30,
+    marginLeft : 15,
     marginRight: 15
   }
 });
