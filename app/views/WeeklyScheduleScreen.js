@@ -89,7 +89,7 @@ export default class WeeklyScheduleScreen extends Component {
           color   = "red"
         />
         <Body>
-          <Text>{exercise.name}</Text>
+          <Text>{exercise.name} - 3 Sets of 10 Reps</Text>
         </Body>
       </ListItem>
     );

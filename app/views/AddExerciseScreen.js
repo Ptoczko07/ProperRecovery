@@ -179,7 +179,7 @@ export default class AddExerciseScreen extends Component {
               this.createStringOfDays();
             }}
           />
-        </Footer>
+      </Footer>
       </Container>
     );
   }
