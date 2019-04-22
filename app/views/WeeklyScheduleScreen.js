@@ -21,9 +21,10 @@ import {
 
 import { db } from "../src/config";
 // we want to read from the variable now
-let currentPlan     = db.ref("/planList");
+let currentPlan = db.ref("/planList");
 let currentPlanName = db.ref("/currPlan");
-    listOfExercises = [];
+listOfExercises = [];
+var arrayOfChecks = [];
 
 export default class WeeklyScheduleScreen extends Component {
   constructor(props) {
@@ -40,13 +41,13 @@ export default class WeeklyScheduleScreen extends Component {
     //get the plan name that we want first
     var currPlanName = "";
     currentPlanName.on("value", snapshot => {
-      let data         = snapshot.val();
-          currPlanName = data.name;
+      let data = snapshot.val();
+      currPlanName = data.name;
     });
 
     // parse the workout tree until we find what we want
     currentPlan.on("value", snapshot => {
-      let data   = snapshot.val();
+      let data = snapshot.val();
       let object = Object.values(data);
       object.forEach(plan => {
         if (plan.workOutPlan.planName == currPlanName) {
@@ -80,13 +81,17 @@ export default class WeeklyScheduleScreen extends Component {
   });
 
   appendListItem(i, exercise) {
-    //exerciseList.monday.push(
+    arrayOfChecks.push(false);
     return (
       <ListItem key={i}>
         <CheckBox
-          checked = {false}
-          onPress = {() => (this.checked = !this.checked)}
-          color   = "red"
+          checked={arrayOfChecks[i]}
+          value={arrayOfChecks[i]}
+          onPress={() => {
+            arrayOfChecks[i] = !arrayOfChecks[i];
+            this.forceUpdate();
+          }}
+          color="red"
         />
         <Body>
           <Text>{exercise.name} - 3 Sets of 10 Reps</Text>
@@ -99,19 +104,19 @@ export default class WeeklyScheduleScreen extends Component {
     //someone else do it im tired
 
     var exerciseList = {
-      monday   : [],
-      tuesday  : [],
+      monday: [],
+      tuesday: [],
       wednesday: [],
-      thursday : [],
-      friday   : [],
-      saturday : [],
-      sunday   : []
+      thursday: [],
+      friday: [],
+      saturday: [],
+      sunday: []
     };
 
     var i = 0;
     listOfExercises.forEach(exercise => {
       for (dayLetter of exercise.days) {
-        console.log(i);
+        //console.log(i);
         if (dayLetter == "M") {
           exerciseList.monday.push(this.appendListItem(i, exercise));
         }
@@ -183,13 +188,18 @@ export default class WeeklyScheduleScreen extends Component {
             </Tab>
           </Tabs>
           <Fab
-            direction      = "up"
-            containerStyle = {{}}
-            style          = {{ backgroundColor: "#5067FF" }}
-            position       = "bottomRight"
-            onPress        = {() =>
-              alert("set the checkboxes for each week to unchecked")
-            }
+            direction="up"
+            containerStyle={{}}
+            style={{ backgroundColor: "#5067FF" }}
+            position="bottomRight"
+            onPress={() => {
+              alert("set the checkboxes for each week to unchecked");
+              for (i = 0; i < arrayOfChecks.length; i++) {
+                arrayOfChecks[i] = false;
+              }
+              //console.log(arrayOfChecks);
+              this.forceUpdate();
+            }}
           >
             <Icon name="md-refresh" />
           </Fab>
@@ -201,18 +211,18 @@ export default class WeeklyScheduleScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#9db5b2"
   },
   tab: {
     marginTop: 12
   },
   text: {
-    fontSize  : 24,
+    fontSize: 24,
     marginLeft: 10
   },
   content: {
-    flex           : 1,
+    flex: 1,
     backgroundColor: "#ffffff"
   }
 });
