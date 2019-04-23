@@ -1,6 +1,7 @@
 # ProperRecovery
 
-Links used
+Firebase Tutorials used
+
 https://reactnavigation.org/docs/en/params.html
 https://snack.expo.io/BkCWHXqqZ
 https://reactnavigation.org/docs/en/function-after-focusing-screen.html
