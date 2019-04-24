@@ -66,11 +66,11 @@ export default class HomeScreen extends Component {
               large
               source={{
                 uri: 
-                  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1031&q=80"
+                  "https://www.latimes.com/resizer/2T803oRoQQQpAEl4xpdNaqZOdUI=/800x0/www.trbimg.com/img-5cb41179/turbine/la-1555304820-5mnu87v1cd-snap-image"
               }}
             />
             <H1 style={{ paddingTop: 20, color: "white" }}>
-              Welcome Back, Pat!
+              Welcome Back, Jon!
             </H1>
             <Button
               block
