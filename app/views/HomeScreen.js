@@ -45,7 +45,7 @@ export default class HomeScreen extends Component {
           <Title style={{ color: "white" }}>Proper Recovery</Title>
         </Body>
         <Right style={{ flex: 1  }}>
-          <Button transparent onPress={() => navigation.push("HomeScreen")}  >
+          <Button transparent >
 
             <Icon name="home" />
            
