@@ -22,7 +22,8 @@ import {
 } from "native-base";
 import CustomButton from "../components/customButton";
 
-var days = "";
+var days     = "";
+var showDays = "";
 
 export default class AddExerciseScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -169,7 +170,7 @@ export default class AddExerciseScreen extends Component {
               <Input keyboardType="numeric" />
             </Item>
             <Item floatingLabel last>
-              <Label>Enter Number of Reps</Label>
+              <Label>Enter Number of Reps/Seconds</Label>
               <Input keyboardType="numeric" />
             </Item>
           </Form>
@@ -179,6 +180,7 @@ export default class AddExerciseScreen extends Component {
             text    = "Save Exercise"
             onPress = {() => {
               this.createStringOfDays();
+              alert("Exercise saved successfully");
             }}
           />
       </Footer>

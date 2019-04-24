@@ -21,8 +21,8 @@ import { db } from "../src/config";
 
 // added by manny
 let currentPlanName = db.ref("/currPlan");
-let planList = db.ref("/planList");
-listOfPlanNames = [];
+let planList        = db.ref("/planList");
+    listOfPlanNames = [];
 
 // added by manny
 let setCurrentPlan = plan => {
@@ -30,7 +30,9 @@ let setCurrentPlan = plan => {
     name: plan
   });
 };
-//
+//list of colors
+let colors = ['#5dff54', '#ff545d', '#ffa754', '#5462ff', '#ffe11d', '#c71dff']
+
 
 export default class SelectPlanSelection extends Component {
   state = {
@@ -44,7 +46,7 @@ export default class SelectPlanSelection extends Component {
   componentDidMount() {
     listOfPlanNames = [];
     planList.on("value", snapshot => {
-      let data = snapshot.val();
+      let data   = snapshot.val();
       let object = Object.values(data);
       object.forEach(plan => {
         listOfPlanNames.push(plan.workOutPlan.planName);
@@ -81,11 +83,8 @@ export default class SelectPlanSelection extends Component {
       <ListItem key={i} thumbnail>
         <Left>
           <Thumbnail
+            style = {{backgroundColor: colors[i]}}
             square
-            source={{
-              uri:
-                "https://www.naplesorthopedic.com/wp-content/uploads/2015/01/shoulder.jpg"
-            }}
           />
         </Left>
         <Body>
@@ -111,7 +110,7 @@ export default class SelectPlanSelection extends Component {
 
   render() {
     UIplanList = [];
-    i = 0;
+    i          = 0;
     listOfPlanNames.forEach(planName => {
       UIplanList.push(this.appendListItem(planName, i));
       i++;
@@ -128,7 +127,7 @@ export default class SelectPlanSelection extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#ffffff"
   }
 });

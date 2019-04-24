@@ -48,9 +48,7 @@ export default class HomeScreen extends Component {
           <Button transparent >
 
             <Icon name="home" />
-           
             
-
           </Button>
         </Right>
       </Header>

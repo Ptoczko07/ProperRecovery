@@ -27,14 +27,14 @@ import { db } from "../src/config";
 import { StackActions, NavigationEvents } from "react-navigation";
 
 var workOutPlan = {
-  planName: "",
+  planName       : "",
   listOfExercises: []
 };
 
-var planName = "";
+var planName     = "";
 var exerciseName = "";
-var days = "";
-let uploadPlan = plan => {
+var days         = "";
+let uploadPlan   = plan => {
   db.ref("/planList").push({
     workOutPlan
   });
@@ -43,7 +43,7 @@ let uploadPlan = plan => {
 export default class CreatePlanScreen extends Component {
   //this is where the nested plan structure will be located to save a plan to firebase
   state = {
-    planName: "",
+    planName      : "",
     listOfExercies: [
       {
         name: "",
@@ -82,14 +82,14 @@ export default class CreatePlanScreen extends Component {
   //using this to wipe state when we move between pages
   componentDidMount() {
     workOutPlan = {
-      planName: "",
+      planName       : "",
       listOfExercises: []
     };
-    planName = "";
+    planName      = "";
     texerciseName = "";
 
-    const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
+    const { navigation }     = this.props;
+          this.focusListener = navigation.addListener("didFocus", () => {
       //console.log("back at create a plan");
       days = this.props.navigation.getParam("days", "");
       if (days != "") {
@@ -130,7 +130,7 @@ export default class CreatePlanScreen extends Component {
 
     //TODO move this to its own function and stuff
     var exerciseList = [];
-    var i = 0;
+    var i            = 0;
     workOutPlan.listOfExercises.forEach(exercise => {
       exerciseList.push(
         <ListItem key={i++}>
@@ -179,10 +179,11 @@ export default class CreatePlanScreen extends Component {
 
         <Footer style={{ backgroundColor: "#0b3c5d" }}>
           <CustomButton
-            text="Save Program"
-            onPress={() => {
-              alert("program Saved");
+            text    = "Save Program"
+            onPress = {() => {
+              //alert("Program Saved");
               this.SaveProgram();
+              this.props.navigation.push("HomeScreen");
             }}
           />
         </Footer>
@@ -193,13 +194,13 @@ export default class CreatePlanScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    flex           : 1,
     backgroundColor: "#ffffff"
   },
   text: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop : 20,
     marginLeft: 12,
-    fontSize: 22
+    fontSize  : 22
   }
 });
