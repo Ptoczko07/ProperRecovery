@@ -65,9 +65,11 @@ export default class SelectPlanSelection extends Component {
         <Body style={{ flex: 2, alignItems: "center" }}>
           <Title style={{ color: "white" }}>Plans List</Title>
         </Body>
-        <Right style={{ flex: 1 }}>
-          <Button transparent>
-            <Icon name="menu" />
+        <Right style={{ flex: 1 }} >
+          <Button transparent onPress={() => navigation.push("HomeScreen")}  >
+
+            <Icon name="home" />
+           
           </Button>
         </Right>
       </Header>

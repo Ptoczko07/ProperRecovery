@@ -42,8 +42,10 @@ export default class AddExerciseScreen extends Component {
           <Title style={{ color: "white" }}>Proper Recovery</Title>
         </Body>
         <Right style={{ flex: 1 }}>
-          <Button transparent>
-            <Icon name="menu" />
+          <Button transparent onPress={() => navigation.push("HomeScreen")}  >
+
+            <Icon name="home" />
+           
           </Button>
         </Right>
       </Header>

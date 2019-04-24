@@ -34,8 +34,10 @@ export default class CreatePlanSelection extends Component {
           <Title style={{ color: "white" }}>Plans</Title>
         </Body>
         <Right style={{ flex: 1 }}>
-          <Button transparent>
-            <Icon name="menu" />
+        <Button transparent onPress={() => navigation.push("HomeScreen")}  >
+
+            <Icon name="home" />
+           
           </Button>
         </Right>
       </Header>
